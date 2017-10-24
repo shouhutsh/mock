@@ -1,0 +1,8 @@
+{
+"BillNo":"${BillNo}",
+"Currency":"3",
+"Amount":"100.00",
+"ReturnURL":"https://pgw.glbpay.com/bank/goopay_recieve/",
+"Succeed":${RESP_CODE},
+"Remark":"${RESP_MSG}"
+}

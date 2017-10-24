@@ -1,0 +1,40 @@
+{
+  "LOAD_TIMEOUT": 300,
+
+  "CHANNEL": [
+    {
+      "name":"GOOPAY_PAYMENT",
+      "regex": ".*BillNo.",
+      "format": "GET_STRING",
+      "template": "goopay/payment.vm",
+      "specialField": "cardbank",
+      "specialMap":{
+        "ABC": {
+          "PARAM" : "RESP_CODE=10,RESP_MSG=FAILED",
+          "SLEEP" : 10
+        },
+        "DEFAULT": {
+          "PARAM" : "RESP_CODE=88,RESP_MSG=SUCCESS"
+        }
+      }
+    },
+    {
+      "name":"GOOPAY_QUERY",
+      "regex": ".*flowId.",
+      "format": "GET_STRING",
+      "template": "goopay/query.vm"
+    },
+    {
+      "name":"GOOPAY_REFUND",
+      "regex": ".*refundId.",
+      "format": "GET_STRING",
+      "template": "goopay/query.vm"
+    },
+    {
+      "name":"GOOPAY_REVERSAL",
+      "regex": ".*reversalId.",
+      "format": "GET_STRING",
+      "template": "goopay/query.vm"
+    }
+  ]
+}
